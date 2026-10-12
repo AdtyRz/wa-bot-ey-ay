@@ -1,0 +1,31 @@
+# Binaries
+/bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+temanwa-ai
+
+# Test artifacts
+*.test
+*.out
+/testdata/temp/
+/tmp/
+
+# Env & Secrets
+.env
+*.local
+credentials.json
+*.pem
+*.key
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
