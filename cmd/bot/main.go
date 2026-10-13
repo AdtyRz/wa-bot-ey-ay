@@ -107,6 +107,15 @@ func main() {
 	}
 	mux.Handle(webhookPath, webhookHandler)
 	mux.HandleFunc("/health", webhook.HealthHandler)
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/" {
+			http.NotFound(w, r)
+			return
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write([]byte(`{"status":"ok","service":"temanwa-ai","message":"TemanWA AI Bot is running"}`))
+	})
 
 	server := &http.Server{
 		Addr:         ":" + cfg.Port,
